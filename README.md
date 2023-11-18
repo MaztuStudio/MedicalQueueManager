@@ -24,4 +24,4 @@ The medical clinic in question has a dogwater appointment system, so people that
 
 ## Final notes
 
-I shouln't be doing this. (-_-)
+It shouldn't be me doing this. (-_-)
