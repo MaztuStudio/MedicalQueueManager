@@ -4,7 +4,7 @@ This repo contains a project to manage the queue of people at a medical clinic.
 
 ## Project Uses
 
-- Laravel Framework 10.31.0
+  - Laravel Framework 10.31.0
   - CSS
   - HTML
   - MySQL
