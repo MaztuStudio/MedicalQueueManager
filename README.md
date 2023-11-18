@@ -14,12 +14,11 @@ This repo contains a project to manage the queue of people at a medical clinic.
 The medical clinic in question has a dogwater appointment system, so people that don't have an appontment have to take turns (all managed by the clients MANUALLY ofc) and track who goes before and after them, because of this a lady began to write doen the queue order and charging for it, This app is to automatize the process and remove the 3rd parties involved
 
 ### Objectives and Tracking
-
-`Import Client Database` ✖️
-`Index & User Search Screen` ✖️
-`Nurse's User List Screen` ✖️
-`Queue Screen` ✖️
-`~~C~~RUD Functionality For The Lists` ✖️
+- [ ] Import Client Database :tada:
+- [ ] Index & User Search Scree
+- [ ] Nurse's User List Screen
+- [ ] Queue Screen
+- [ ] ~~C~~RUD Functionality For The List
 
   ~~Not Including the DB ofc~~.
 
