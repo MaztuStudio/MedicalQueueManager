@@ -65,16 +65,6 @@ class UsuarioController extends Controller
     public function update(Request $request, $id)
     {
             //actualiza los datos en la bd
-            
-            $usuario = Usuario::find($id);
-            $usuario->nombre = $request->post('nombre');
-            $usuario->paterno = $request->post('paterno');
-            $usuario->materno = $request->post('materno');
-            $usuario->telefono = $request->post('telefono');
-            $usuario->consultorio = $request->post('consultorio');
-            $usuario->save();
-            return redirect()->route("personas.index")->with("success","Editado Correctamente");
-    
         
     }
 

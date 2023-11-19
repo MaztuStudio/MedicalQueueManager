@@ -32,12 +32,12 @@
       
       <form action="{{route('espera.store')}}" method="POST">
         @csrf
-        <td><input type="text" name="nombre" value="{{$usuario->nombre}}" disabled></td>
-        <td><input type="text" name="paterno" value="{{$usuario->paterno}}" disabled></td>
-        <td><input type="text" name="materno" value="{{$usuario->materno}}" disabled></td>
-        <td><input type="text" name="id" value="{{$usuario->id}}" disabled></td>
-        <td><input type="text" name="telefono" value="{{$usuario->telefono}}" disabled></td>
-        <td><input type="text" name="consultorio" value="{{$usuario->consultorio}}" disabled></td>
+        <td><input type="text" name="nombre" class="form-control" value="{{$usuario->nombre}}" ></td>
+        <td><input type="text" name="paterno" class="form-control" value="{{$usuario->paterno}}" ></td>
+        <td><input type="text" name="materno" class="form-control" value="{{$usuario->materno}}" ></td>
+        <td><input type="text" name="id" class="form-control" value="{{$usuario->id}}" ></td>
+        <td><input type="text" name="telefono" class="form-control" value="{{$usuario->telefono}}" ></td>
+        <td><input type="text" name="consultorio" class="form-control" value="{{$usuario->consultorio}}" ></td>
     </tr>
   </tbody>
 </table>
@@ -48,3 +48,4 @@
 </div>
 @endif
 @endsection
+

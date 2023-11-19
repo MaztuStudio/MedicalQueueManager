@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\EsperaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,9 +16,9 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [UsuarioController::class, 'index'])->name('usuario.index');
-Route::get('/list', [UsuarioController::class, 'list'])->name('usuario.list');
+Route::get('/list', [EsperaController::class, 'index'])->name('espera.index');
 Route::get('/create', [UsuarioController::class, 'create'])->name('usuario.create');
-Route::post('/store', [UsuarioController::class, 'store'])->name('usuario.store');
+Route::post('/store', [EsperaController::class, 'store'])->name('espera.store');
 Route::get('/edit/', [UsuarioController::class, 'edit'])->name('usuario.edit');
 Route::put('/update/{id}', [UsuarioController::class, 'update'])->name('usuario.update');
 Route::get('/show/{id}', [UsuarioController::class, 'show'])->name('usuario.show');

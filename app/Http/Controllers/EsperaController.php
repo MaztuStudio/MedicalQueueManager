@@ -35,9 +35,6 @@ class EsperaController extends Controller
     public function store(Request $request)
     {
         //para guardar datos en la bd
-        $afiliacion = $request->input('nombre');
-        print_r("adsadads");
-        /*
         $espera = new Espera();
         $espera->nombre = $request->post('nombre');
         $espera->paterno = $request->post('paterno');
@@ -47,7 +44,7 @@ class EsperaController extends Controller
         $espera->consultorio = $request->post('consultorio');
         $espera->save();
         return redirect()->route("espera.index")->with("success","Agregado Correctamente");
-        */
+        
     }
 
     /**
