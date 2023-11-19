@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,7 +12,11 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/', [UsuarioController::class, 'index'])->name('personas.index');
+Route::get('/create', [UsuarioController::class, 'create'])->name('personas.create');
+Route::post('/store', [UsuarioController::class, 'store'])->name('personas.store');
+Route::get('/edit', [UsuarioController::class, 'edit'])->name('personas.edit');
+Route::put('/update/{id}', [UsuarioController::class, 'update'])->name('personas.update');
+Route::get('/show/{id}', [UsuarioController::class, 'show'])->name('personas.show');
+Route::delete('/destroy/{id}', [UsuarioController::class, 'destroy'])->name('personas.destroy');
 
-Route::get('/', function () {
-    return view('welcome');
-});
