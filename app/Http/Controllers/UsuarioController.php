@@ -25,6 +25,12 @@ class UsuarioController extends Controller
         
     }
 
+    public function turnDisplay()
+    {
+       // el html de la tabla para la el succes del registro
+        
+    }
+
     /**
      * Store a newly created resource in storage.
      */
@@ -44,18 +50,32 @@ class UsuarioController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit()
+    public function edit(Request $request)
     {
         // jala los datos que se van a editar
-        return view("confirmData");
+        $afiliacion = $request->input('nAfiliacion');
+        
+        $usuario = Usuario::find($afiliacion);
+        return view("confirmData", compact('usuario'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Usuario $usuario)
+    public function update(Request $request, $id)
     {
-        //actualiza los datos en la bd
+            //actualiza los datos en la bd
+            
+            $usuario = Usuario::find($id);
+            $usuario->nombre = $request->post('nombre');
+            $usuario->paterno = $request->post('paterno');
+            $usuario->materno = $request->post('materno');
+            $usuario->telefono = $request->post('telefono');
+            $usuario->consultorio = $request->post('consultorio');
+            $usuario->save();
+            return redirect()->route("personas.index")->with("success","Editado Correctamente");
+    
+        
     }
 
     /**
@@ -64,5 +84,10 @@ class UsuarioController extends Controller
     public function destroy(Usuario $usuario)
     {
         //elimina un registro
+    }
+    
+    public function list()
+    {
+        return view('turnDisplay');
     }
 }

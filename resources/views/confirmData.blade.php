@@ -1,8 +1,8 @@
 @extends('layout/template')
 
 @section('contenido')
-<link rel="stylesheet" href="{{ asset('assets/bootstrap.css')}}">
-<link rel="stylesheet" href="{{ asset('assets/custom.css')}}">
+<link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css')}}">
+<link rel="stylesheet" href="{{ asset('assets/css/custom.css')}}">
 
 <div class="bg-image"></div>
 
@@ -16,20 +16,24 @@
       <th>Nombre</th>
       <th>Numero de Afiliacion</th>
       <th>Telefono</th>
+      <th>Consultorio</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>A</td>
-      <td>B</td>
-      <td>C</td>
+      
+      <form action="{{route('usuario.update',$usuario->id)}}" method="POST">
+        @method('PUT')
+        @csrf
+        <td>{{$usuario->nombre}} {{$usuario->paterno}} {{$usuario->materno}}</td>
+        <td>{{$usuario->id}}</td>
+        <td>{{$usuario->telefono}}</td>
+        <td>{{$usuario->consultorio}}</td>
     </tr>
   </tbody>
 </table>
-<form action="#" method="POST">
-  <input type="button" class="btn btn-success btn-lg" value="‎ ‎ ‎ Si ‎ ‎ ‎ ">
-  <input type="button" class="btn btn-danger btn-lg" value="‎ ‎  No ‎ ‎ " href="#">
+<input type="submit" class="btn btn-success btn-lg" value="‎ ‎ ‎ Si ‎ ‎ ‎ ">
+<a href="{{route("usuario.index")}}" class="btn btn-danger btn-lg">Volver</a>
 </form>
 </div>
-<
 @endsection
