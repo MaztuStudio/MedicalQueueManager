@@ -15,7 +15,7 @@ The medical clinic in question has a dogwater appointment system, so people that
 
 ### Objectives and Tracking
 - [ ] Import Client Database
-- [x] Index & User Search Screen
+- ☑️ Index & User Search Screen
 - [ ] Nurse's User List Screen
 - [ ] Queue Screen
 - [ ] ~~C~~RUD Functionality For The List
