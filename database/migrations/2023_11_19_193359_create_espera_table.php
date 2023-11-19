@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('paterno');
             $table->string('materno');
             $table->integer('telefono');
+            $table->integer('afiliacion');
             $table->integer('consultorio');
             $table->timestamps();
         });
@@ -24,6 +25,7 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
+     * 
      */
     public function down(): void
     {
