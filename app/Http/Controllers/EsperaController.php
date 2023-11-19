@@ -13,11 +13,8 @@ class EsperaController extends Controller
     public function index()
     {
         //
-        return view('turnDisplay');
-        /*
-        $datos = Personas::orderBy('aPaterno', 'desc')->paginate(3);
-        return view('welcome', compact('datos'));
-        */
+        $datos = Espera::orderBy('id', 'desc')->paginate(10);
+        return view('turnDisplay', compact('datos'));
     }
 
     /**
@@ -43,7 +40,10 @@ class EsperaController extends Controller
         $espera->afiliacion = $request->post('id');
         $espera->consultorio = $request->post('consultorio');
         $espera->save();
+        $datos = Personas::orderBy('aPaterno', 'desc')->paginate(3);
+        return view('welcome', compact('datos'));
         return redirect()->route("espera.index")->with("success","Agregado Correctamente");
+
         
     }
 
