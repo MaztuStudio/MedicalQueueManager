@@ -35,11 +35,18 @@ class EsperaController extends Controller
         
     }
 
-    
-    public function done(Request $request, $id)
+    public function nurselist(Request $request)
     {
-        //
+        /*
+        if($request->input('nAfiliacion') == 63034482){
+            return view('nurseDisplay');
+        }else{
+            print_r($request->input('nAfiliacion'));
+        }
+        */
         
+        $datos = Espera::all();
+        return view('nurseDisplay', compact('datos'));
         
     }
 
@@ -48,6 +55,11 @@ class EsperaController extends Controller
      */
     public function store(Request $request)
     {
+        
+        $espera = new Espera();
+        if ($espera::where('afiliacion', $request->post('id'))->exists()) {
+        return redirect()->route("espera.index")->with("failure","El usuario ya tiene una cita para el dia de hoy");
+        }else{
         $c1 = session('c1', 1);
         $c2 = session('c2', 1);
         $c3 = session('c3', 1);
@@ -80,13 +92,17 @@ class EsperaController extends Controller
         $espera->save();
         return redirect()->route("espera.index")->with("success","Agregado Correctamente");
     }
+    }
 
     /**
      * Display the specified resource.
      */
-    public function show(Espera $espera)
+    public function show($id)
     {
         //
+        
+        $listo = Espera::find($id);
+        return view("delete", compact('listo'));
     }
 
     /**
@@ -108,8 +124,13 @@ class EsperaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Espera $espera)
+    public function destroy($id)
     {
-        //
+
+        $lista = Espera::find($id);
+        $lista->delete();
+        return redirect()->route("espera.nurselist")->with("success","Eliminado Correctamente");
+        
     }
+    
 }
