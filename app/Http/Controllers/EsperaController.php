@@ -7,14 +7,16 @@ use Illuminate\Http\Request;
 
 class EsperaController extends Controller
 {
+    
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
         //
-        $datos = Espera::orderBy('id', 'desc')->paginate(10);
-        return view('turnDisplay', compact('datos'));
+        $datos = Espera::orderBy('id', 'asc')->paginate(10);
+        return view('welcome', compact('datos'));
     }
 
     /**
@@ -25,13 +27,31 @@ class EsperaController extends Controller
         //
         
     }
+    public function list()
+    {
+        //
+        $datos = Espera::all();
+        return view('turnDisplay', compact('datos'));
+        
+    }
+
+    
+    public function done(Request $request, $id)
+    {
+        //
+        
+        
+    }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        //para guardar datos en la bd
+        $c1 = session('c1', 1);
+        $c2 = session('c2', 1);
+        $c3 = session('c3', 1);
+
         $espera = new Espera();
         $espera->nombre = $request->post('nombre');
         $espera->paterno = $request->post('paterno');
@@ -39,12 +59,26 @@ class EsperaController extends Controller
         $espera->telefono = $request->post('telefono');
         $espera->afiliacion = $request->post('id');
         $espera->consultorio = $request->post('consultorio');
-        $espera->save();
-        $datos = Personas::orderBy('aPaterno', 'desc')->paginate(3);
-        return view('welcome', compact('datos'));
-        return redirect()->route("espera.index")->with("success","Agregado Correctamente");
+        switch ($request->post('consultorio')) {
+            case 1:
+                $espera->turno = $c1;
+                $c1++;
+                break;
 
-        
+            case 2:
+                $espera->turno = $c2;
+                $c2++;
+                break;
+
+            case 3:
+                $espera->turno = $c3;
+                $c3++;
+                break;
+        }
+
+        session(['c1' => $c1, 'c2' => $c2, 'c3' => $c3]);
+        $espera->save();
+        return redirect()->route("espera.index")->with("success","Agregado Correctamente");
     }
 
     /**
