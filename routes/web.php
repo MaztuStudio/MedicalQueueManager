@@ -16,11 +16,15 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [UsuarioController::class, 'index'])->name('usuario.index');
-Route::get('/list', [EsperaController::class, 'index'])->name('espera.index');
 Route::get('/create', [UsuarioController::class, 'create'])->name('usuario.create');
-Route::post('/store', [EsperaController::class, 'store'])->name('espera.store');
 Route::get('/edit/', [UsuarioController::class, 'edit'])->name('usuario.edit');
 Route::put('/update/{id}', [UsuarioController::class, 'update'])->name('usuario.update');
 Route::get('/show/{id}', [UsuarioController::class, 'show'])->name('usuario.show');
 Route::delete('/destroy/{id}', [UsuarioController::class, 'destroy'])->name('usuario.destroy');
+
+
+Route::get('/e1', [EsperaController::class, 'index'])->name('espera.index');
+Route::get('/list', [EsperaController::class, 'list'])->name('espera.list');
+Route::post('/store', [EsperaController::class, 'store'])->name('espera.store');
+Route::post('/done/{id}', [EsperaController::class, 'done'])->name('espera.done');
 
