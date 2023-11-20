@@ -16,9 +16,10 @@ The medical clinic in question has a dogwater appointment system, so people that
 ### Objectives and Tracking
 - ◻️ Import Client Database
 - ✅ Index & User Search Screen
+- ◻️ First 4 Users Get Timed Appointments
 - ✅ Nurse's User List Screen
 - ✅ Queue Screen
-- ◻️ ~~C~~RUD Functionality For The List
+- ✅ ~~C~~R~~U~~D Functionality For The List
 
 ~~Not Including the DB ofc~~.
 
