@@ -37,13 +37,6 @@ class EsperaController extends Controller
 
     public function nurselist(Request $request)
     {
-        /*
-        if($request->input('nAfiliacion') == 63034482){
-            return view('nurseDisplay');
-        }else{
-            print_r($request->input('nAfiliacion'));
-        }
-        */
         
         $datos = Espera::all();
         return view('nurseDisplay', compact('datos'));
@@ -99,11 +92,21 @@ class EsperaController extends Controller
      */
     public function show($id)
     {
-        //
-        
         $listo = Espera::find($id);
         return view("delete", compact('listo'));
     }
+
+    public function go(Request $request)
+    {
+        
+        
+        if($request->input('pass') == 63034482){
+            return redirect()->route("espera.nurselist");
+        }else{
+            return redirect()->route("espera.login")->with("failure","Contraseña Incorrecta");
+        }
+    }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -119,6 +122,12 @@ class EsperaController extends Controller
     public function update(Request $request, Espera $espera)
     {
         //
+    }
+
+    public function login(Request $request)
+    {
+        return view('nurseLogin');
+        
     }
 
     /**
