@@ -27,10 +27,8 @@
           <tr>
             <td>Turno</td>
             <td>Nombre</td>
-            <td>Paterno</td>
-            <td>Materno</td>
-            <td>Telefono</td>
-            <td>No Afiliacion</td>
+            <td>Apellido Paterno</td>
+            <td>Apellido Materno</td>
             <td>Consultorio</td>
           </tr>
         </thead>
@@ -43,8 +41,6 @@
           <td>{{$item->nombre}}</td>
           <td>{{$item->paterno}}</td>
           <td>{{$item->materno}}</td>
-          <td>{{$item->telefono}}</td>
-          <td>{{$item->afiliacion}}</td>
           <td>{{$item->consultorio}}</td>
         </tr>
     @endif
