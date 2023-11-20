@@ -33,7 +33,7 @@
     </form>
     <br>
     <a href="{{route("espera.list")}}" class="btn btn-outline-light">Ver Lista</a>
-    <a href="{{route("espera.login")}}" class="btn btn-outline-light">Eres la enfermera?</a>
+    <a href="{{route("espera.login")}}" class="btn btn-outline-light">Eres Asistente?</a>
   </p>
 </div>
 
