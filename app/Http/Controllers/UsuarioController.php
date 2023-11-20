@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Espera;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
 
@@ -54,9 +55,11 @@ class UsuarioController extends Controller
     {
         // jala los datos que se van a editar
         $afiliacion = $request->input('nAfiliacion');
-        
         $usuario = Usuario::find($afiliacion);
-        return view("confirmData", compact('usuario'));
+        $tiempo = Espera::where('consultorio', $usuario->consultorio)->pluck('tiempo')->all();
+        //print_r($tiempo);
+        //print_r($usuario->consultorio);
+        return view("confirmData", compact('usuario', 'tiempo'));
     }
 
     /**

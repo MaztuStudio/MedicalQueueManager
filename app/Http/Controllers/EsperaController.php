@@ -48,7 +48,7 @@ class EsperaController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $espera = new Espera();
         if ($espera::where('afiliacion', $request->post('id'))->exists()) {
         return redirect()->route("espera.index")->with("failure","El usuario ya tiene una cita para el dia de hoy");
@@ -64,6 +64,28 @@ class EsperaController extends Controller
         $espera->telefono = $request->post('telefono');
         $espera->afiliacion = $request->post('id');
         $espera->consultorio = $request->post('consultorio');
+        
+        switch($request->post('tiempo')){
+            case 0:
+            $espera->tiempo = '8:00:00';
+            break;
+            case 1:
+            $espera->tiempo = '8:15:00';
+            break;
+            case 2:
+            $espera->tiempo = '8:30:00';
+            break;
+            case 3:
+            $espera->tiempo = '8:45:00';
+            break;
+            case 4:
+            $espera->tiempo = '9:00:00';
+            break;
+            default:
+            $espera->tiempo = null;
+            break;
+        }
+
         switch ($request->post('consultorio')) {
             case 1:
                 $espera->turno = $c1;
@@ -85,6 +107,7 @@ class EsperaController extends Controller
         $espera->save();
         return redirect()->route("espera.index")->with("success","Agregado Correctamente");
     }
+    
     }
 
     /**
