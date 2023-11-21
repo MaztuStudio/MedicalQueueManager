@@ -124,7 +124,8 @@ class EsperaController extends Controller
         
         
         if($request->input('pass') == 63034482){
-            return redirect()->route("espera.nurselist");
+        $datos = Espera::all();
+        return view('nurseDisplay', compact('datos'));
         }else{
             return redirect()->route("espera.login")->with("failure","Contraseña Incorrecta");
         }
