@@ -26,7 +26,6 @@ Route::get('/e1', [EsperaController::class, 'index'])->name('espera.index');
 Route::get('/login', [EsperaController::class, 'login'])->name('espera.login');
 Route::get('/go', [EsperaController::class, 'go'])->name('espera.go');
 Route::get('/list', [EsperaController::class, 'list'])->name('espera.list');
-Route::get('/nurselist', [EsperaController::class, 'nurselist'])->name('espera.nurselist');
 Route::post('/store', [EsperaController::class, 'store'])->name('espera.store');
 Route::get('/show/{id}', [EsperaController::class, 'show'])->name('espera.show');
 Route::delete('/destroy/{id}', [EsperaController::class, 'destroy'])->name('espera.destroy');

@@ -35,7 +35,7 @@
                 <form action="{{route('espera.destroy',$listo->id)}}" method="POST">
                     @csrf
                     @method("DELETE")
-                    <a href="{{route("espera.nurselist")}}" class="btn btn-primary">Regresar</a>
+                    <a href="{{route("espera.go")}}" class="btn btn-primary">Regresar</a>
                     <input type="submit" class="btn btn-danger" value="Eliminar">
                 </form>
           </div>

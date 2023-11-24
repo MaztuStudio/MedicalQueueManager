@@ -16,7 +16,7 @@
 </div>
 @elseif($mensaje = Session::get('failure'))
 <div class="alert alert-danger" role="alert">
-  Este usuario ya tiene una cita para el dia de hoy
+  {{$mensaje}}
 </div>
 
 @endif
@@ -27,7 +27,7 @@
     <form action="{{route('usuario.edit')}}" method="GET">
         <label for="fname">Su Numero de Afiliacion</label>
         <br>
-        <input type="number" name="nAfiliacion" required>
+        <input type="number" class="form-control" name="nAfiliacion" required>
         <br>
         <input type="submit" class="btn btn-success btn-lg" value="Continuar">
     </form>

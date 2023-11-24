@@ -35,13 +35,7 @@ class EsperaController extends Controller
         
     }
 
-    public function nurselist(Request $request)
-    {
-        
-        $datos = Espera::all();
-        return view('nurseDisplay', compact('datos'));
-        
-    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -122,8 +116,9 @@ class EsperaController extends Controller
     public function go(Request $request)
     {
         
-        
-        if($request->input('pass') == 63034482){
+        $logged = session('logged', 0);
+        if($request->input('pass') == 63034482 || $logged == 1){
+        session(['logged' => 1]);
         $datos = Espera::all();
         return view('nurseDisplay', compact('datos'));
         }else{
