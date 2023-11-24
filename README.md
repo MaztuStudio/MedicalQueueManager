@@ -20,6 +20,7 @@ The medical clinic in question has a dogwater appointment system, so people that
 - ✅ Nurse's User List Screen
 - ✅ Queue Screen
 - ✅ ~~C~~R~~U~~D Functionality For The List
+- ◻️ Prints Tickets
 
 ~~Not Including the DB ofc~~.
 
