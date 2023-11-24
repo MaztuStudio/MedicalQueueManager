@@ -19,8 +19,8 @@ body, html {
     background-size: cover;
   }
   .bg-text {
-    background-color: rgba(0, 0, 0, 0.536);
-    background-color: rgba(0, 0, 0, 0.797);
+    background-color: #313338ff;
+    background-color: #313338ff;
     color: white;
     font-weight: bold;
     position: absolute;
@@ -37,4 +37,6 @@ width: 100%;
 padding: 12px 20px;
 margin: 8px 0;
 box-sizing: border-box;
+background-color: #1e1f22ff;
+color: white;
 }
