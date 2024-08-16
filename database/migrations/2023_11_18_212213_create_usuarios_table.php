@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('nombre');
             $table->string('paterno');
             $table->string('materno');
-            $table->integer('afiliacion');
             $table->integer('telefono');
             $table->integer('consultorio');
             $table->timestamps();

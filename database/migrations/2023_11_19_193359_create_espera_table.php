@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('espera', function (Blueprint $table) {
+        Schema::create('esperas', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
             $table->string('paterno');
@@ -19,13 +19,15 @@ return new class extends Migration
             $table->integer('telefono');
             $table->integer('afiliacion');
             $table->integer('consultorio');
+            $table->integer('turno');
+            $table->time('tiempo');
             $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
-     * 
+     *
      */
     public function down(): void
     {

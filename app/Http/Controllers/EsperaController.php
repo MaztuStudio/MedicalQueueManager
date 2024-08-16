@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class EsperaController extends Controller
 {
-    
+
 
     /**
      * Display a listing of the resource.
@@ -25,14 +25,14 @@ class EsperaController extends Controller
     public function create()
     {
         //
-        
+
     }
     public function list()
     {
         //
         $datos = Espera::all();
         return view('turnDisplay', compact('datos'));
-        
+
     }
 
 
@@ -47,9 +47,6 @@ class EsperaController extends Controller
         if ($espera::where('afiliacion', $request->post('id'))->exists()) {
         return redirect()->route("espera.index")->with("failure","El usuario ya tiene una cita para el dia de hoy");
         }else{
-        $c1 = session('c1', 1);
-        $c2 = session('c2', 1);
-        $c3 = session('c3', 1);
 
         $espera = new Espera();
         $espera->nombre = $request->post('nombre');
@@ -58,50 +55,22 @@ class EsperaController extends Controller
         $espera->telefono = $request->post('telefono');
         $espera->afiliacion = $request->post('id');
         $espera->consultorio = $request->post('consultorio');
-        
-        switch($request->post('tiempo')){
-            case 0:
-            $espera->tiempo = '8:00:00';
-            break;
-            case 1:
-            $espera->tiempo = '8:15:00';
-            break;
-            case 2:
-            $espera->tiempo = '8:30:00';
-            break;
-            case 3:
-            $espera->tiempo = '8:45:00';
-            break;
-            case 4:
-            $espera->tiempo = '9:00:00';
-            break;
-            default:
-            $espera->tiempo = null;
-            break;
+        $espera->tiempo = $request->post('tiempo');
+
+        $consultorio = $request->post('consultorio');
+        $turno = $espera->where('consultorio', $consultorio)
+                        ->latest('created_at')
+                        ->value('turno');
+        if (is_null($turno)) {
+            $espera->turno = 1;
+        }else{
+        $turno++;
+        $espera->turno = $turno;
         }
-
-        switch ($request->post('consultorio')) {
-            case 1:
-                $espera->turno = $c1;
-                $c1++;
-                break;
-
-            case 2:
-                $espera->turno = $c2;
-                $c2++;
-                break;
-
-            case 3:
-                $espera->turno = $c3;
-                $c3++;
-                break;
-        }
-
-        session(['c1' => $c1, 'c2' => $c2, 'c3' => $c3]);
         $espera->save();
         return redirect()->route("espera.index")->with("success","Agregado Correctamente");
     }
-    
+
     }
 
     /**
@@ -115,7 +84,7 @@ class EsperaController extends Controller
 
     public function go(Request $request)
     {
-        
+
         $logged = session('logged', 0);
         if($request->input('pass') == 63034482 || $logged == 1){
         session(['logged' => 1]);
@@ -146,8 +115,9 @@ class EsperaController extends Controller
     public function login(Request $request)
     {
         return view('nurseLogin');
-        
+
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -157,8 +127,8 @@ class EsperaController extends Controller
 
         $lista = Espera::find($id);
         $lista->delete();
-        return redirect()->route("espera.nurselist")->with("success","Eliminado Correctamente");
-        
+        return redirect()->route("espera.go")->with("success","Eliminado Correctamente");
+
     }
-    
+
 }

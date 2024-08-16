@@ -6,6 +6,9 @@
 
 <div class="bg-image"></div>
 
+@php
+    $arrayTurnos = array('08:00:00', '08:15:00', '08:30:00', '08:45:00', '09:00:00');
+@endphp
 
 <div class="bg-text">
   @if (is_null($usuario))
@@ -31,7 +34,7 @@
   </thead>
   <tbody>
     <tr>
-      
+
       <form action="{{route('espera.store')}}" method="POST">
         @csrf
         <td><input type="text" name="nombre" class="form-control" value="{{$usuario->nombre}}" ></td>
@@ -40,56 +43,18 @@
         <td><input type="text" name="id" class="form-control" value="{{$usuario->id}}" ></td>
         <td><input type="text" name="telefono" class="form-control" value="{{$usuario->telefono}}" ></td>
         <td><input type="text" name="consultorio" class="form-control" value="{{$usuario->consultorio}}" ></td>
-        @switch(count($tiempo))
-        @case(0)
-        <td><select  name="tiempo" class="form-control" style="width: 100px;">
-          <option value='0' >8:00</option>
-          <option value='1' >8:15</option>
-          <option value='2' >8:30</option>
-          <option value='3' >8:45</option>
-          <option value='4' >9:00</option>
-          </select></td>
-            @break
-        
-        @case(1)
-        <td><select  name="tiempo" class="form-control" style="width: 100px;">
-          <option value='1' >8:15</option>
-          <option value='2' >8:30</option>
-          <option value='3' >8:45</option>
-          <option value='4' >9:00</option>
-          </select></td>
-            @break
-        
-        @case(2)
-        <td><select  name="tiempo" class="form-control" style="width: 100px;">
-          <option value='2' >8:30</option>
-          <option value='3' >8:45</option>
-          <option value='4' >9:00</option>
-          </select></td>
-                
-            @break
 
-        @case(3)
-        <td><select  name="tiempo" class="form-control" style="width: 100px;">
-          <option value='3' >8:45</option>
-          <option value='4' >9:00</option>
-          </select></td>
-                
-            @break
+        <td>
+            <select  name="tiempo" class="form-control" style="width: 100px;">
+                @foreach($arrayTurnos as $hora)
+                @if (in_array($hora,$tiempo))
+                @else
+                <option value='{{$hora}}'>{{$hora}}</option>
+                @endif
+                @endforeach
+            </select>
+        </td>
 
-        @case(4)
-        <td><select  name="tiempo" class="form-control" style="width: 100px;">
-          <option value='4' >9:00</option>
-          </select></td>
-                
-            @break
-
-        @case(5)
-                
-            @break
-            @default
-                
-        @endswitch
     </tr>
   </tbody>
 </table>
