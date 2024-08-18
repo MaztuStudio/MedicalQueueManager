@@ -11,12 +11,13 @@ This repo contains a project to manage the queue of people at a medical clinic.
 
 ## The Why's
 
-The medical clinic in question has a dogwater appointment system, so people that don't have an appontment have to take turns (all managed by the clients MANUALLY ofc) and track who goes before and after them, because of this, a lady began to write down the queue order and charging for it, This app is to automatize the process and remove the 3rd parties involved
+This proyect aims to better the clinic's appointment system so people that don't have an appontment don't have to track who goes before and after them
+This app is to automatize the process and remove the 3rd parties involved
 
 ### Objectives and Tracking
 - ◻️ Import Client Database
 - ✅ Index & User Search Screen
-- ◻️ First 4 Users Get Timed Appointments
+- ✅ First 4 Users Get Timed Appointments
 - ✅ Nurse's User List Screen
 - ✅ Queue Screen
 - ✅ ~~C~~R~~U~~D Functionality For The List
@@ -26,4 +27,4 @@ The medical clinic in question has a dogwater appointment system, so people that
 
 ## Final notes
 
-It shouldn't be me doing this. ε/̵͇̿̿/’̿’̿ ̿(◡︵◡)
+Laravel my beloved.
